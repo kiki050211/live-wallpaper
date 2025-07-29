@@ -694,6 +694,9 @@ class LiveWallpaperApp {
         this.renderLandscapes();
         this.bindEvents();
         
+        // 初始化觸控支援
+        this.initTouchSupport();
+        
         // 預設載入4K森林溪流直播作為桌布
         if (this.landscapes.length > 0) {
             this.loadVideo(this.landscapes[0].videoId); // 4K森林溪流直播
@@ -1078,6 +1081,127 @@ class LiveWallpaperApp {
         muteBtn.textContent = this.isMuted ? '🔇' : '🔊';
     }
 
+    initTouchSupport() {
+        // 檢測是否為移動設備
+        this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (this.isMobile) {
+            // 移動設備特定優化
+            this.initMobileOptimizations();
+        }
+        
+        // 為風景項目添加觸控支援
+        document.addEventListener('touchstart', (e) => {
+            const landscapeItem = e.target.closest('.landscape-item');
+            if (landscapeItem) {
+                landscapeItem.style.transform = 'scale(0.95)';
+                landscapeItem.style.transition = 'transform 0.1s ease';
+            }
+        }, { passive: true });
+        
+        document.addEventListener('touchend', (e) => {
+            const landscapeItem = e.target.closest('.landscape-item');
+            if (landscapeItem) {
+                setTimeout(() => {
+                    landscapeItem.style.transform = 'scale(1)';
+                }, 100);
+            }
+        }, { passive: true });
+        
+        // 為按鈕添加觸控反饋
+        document.addEventListener('touchstart', (e) => {
+            const button = e.target.closest('button');
+            if (button && !button.disabled) {
+                button.style.transform = 'scale(0.95)';
+                button.style.transition = 'transform 0.1s ease';
+            }
+        }, { passive: true });
+        
+        document.addEventListener('touchend', (e) => {
+            const button = e.target.closest('button');
+            if (button && !button.disabled) {
+                setTimeout(() => {
+                    button.style.transform = 'scale(1)';
+                }, 100);
+            }
+        }, { passive: true });
+        
+        // 防止雙擊縮放
+        document.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        });
+        
+        // 優化滑動體驗，防止雙擊縮放
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    }
+    
+    initMobileOptimizations() {
+        // 自動隱藏地址欄（僅限支援的瀏覽器）
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                window.scrollTo(0, 1);
+            }, 100);
+        });
+        
+        // 防止頁面滾動（在全螢幕模式下）
+        document.addEventListener('touchmove', (e) => {
+            if (document.body.classList.contains('wallpaper-mode')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // 優化視窗大小變化處理
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                this.handleMobileResize();
+            }, 250);
+        });
+        
+        // 處理螢幕方向變化
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                this.handleOrientationChange();
+            }, 500);
+        });
+    }
+    
+    handleMobileResize() {
+        // 重新調整YouTube播放器大小
+        if (this.player && this.player.getIframe) {
+            const iframe = this.player.getIframe();
+            if (iframe) {
+                iframe.style.height = window.innerWidth < 768 ? '300px' : '500px';
+            }
+        }
+    }
+    
+    handleOrientationChange() {
+        // 處理螢幕方向變化
+        const isLandscape = window.orientation === 90 || window.orientation === -90;
+        
+        if (isLandscape && this.isMobile) {
+            // 橫屏模式優化
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 1000);
+        }
+        
+        // 重新調整佈局
+        this.handleMobileResize();
+    }
+    
     startRandomBackgroundChange() {
         this.colorSchemeManager = new ColorSchemeManager();
         

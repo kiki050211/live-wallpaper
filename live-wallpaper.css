@@ -267,7 +267,23 @@ body {
     transform: scale(1.05);
 }
 
-/* 響應式設計 */
+/* 響應式設計 - 平板 */
+@media (max-width: 1024px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .landscape-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    #youtube-player {
+        height: 400px;
+    }
+}
+
+/* 響應式設計 - 手機橫屏 */
 @media (max-width: 768px) {
     .container {
         padding: 10px;
@@ -278,7 +294,8 @@ body {
     }
     
     .main-content {
-        padding: 20px;
+        padding: 15px;
+        border-radius: 15px;
     }
     
     #youtube-player {
@@ -287,49 +304,99 @@ body {
     
     .selection-header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 15px;
+        text-align: center;
     }
     
     .landscape-selection h2 {
-        text-align: left;
+        text-align: center;
         font-size: 1.5rem;
+        margin-bottom: 0;
     }
     
     .random-selector {
-        align-self: stretch;
+        width: 100%;
         justify-content: center;
     }
     
     .random-btn {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-    
-    .dice {
-        width: 35px;
-        height: 35px;
-        font-size: 20px;
+        font-size: 16px;
+        padding: 12px 24px;
+        min-height: 48px; /* 觸控友好的最小高度 */
     }
     
     .landscape-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .landscape-item {
+        padding: 20px;
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .landscape-item .emoji {
+        font-size: 2.5rem;
+        margin-bottom: 8px;
+    }
+    
+    .landscape-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+    
+    .landscape-item p {
+        font-size: 1rem;
+        line-height: 1.4;
     }
     
     .video-overlay {
         position: static;
         justify-content: center;
         margin-top: 15px;
+        flex-wrap: wrap;
+    }
+    
+    .control-btn {
+        min-height: 44px; /* 觸控友好 */
+        padding: 12px 18px;
+        font-size: 14px;
     }
     
     .pagination-container {
         flex-direction: column;
         gap: 15px;
+        padding: 15px;
     }
     
     .pagination-btn {
         width: 100%;
+        min-height: 48px;
+        font-size: 16px;
         margin: 0;
+    }
+    
+    .page-info {
+        font-size: 1.2rem;
+        padding: 12px 20px;
+        text-align: center;
+    }
+    
+    .instructions {
+        padding: 20px;
+    }
+    
+    .instructions h3 {
+        font-size: 1.3rem;
+    }
+    
+    .instructions li {
+        font-size: 1rem;
+        line-height: 1.6;
     }
 }
 
@@ -381,17 +448,211 @@ body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+/* 響應式設計 - 小螢幕手機 */
 @media (max-width: 480px) {
+    .container {
+        padding: 8px;
+    }
+    
+    .header {
+        margin-bottom: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+    
+    .header p {
+        font-size: 1rem;
+    }
+    
+    .main-content {
+        padding: 12px;
+        border-radius: 12px;
+    }
+    
+    #youtube-player {
+        height: 220px;
+    }
+    
+    .landscape-selection {
+        margin-bottom: 20px;
+    }
+    
+    .landscape-selection h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    .random-btn {
+        font-size: 15px;
+        padding: 10px 20px;
+        min-height: 44px;
+    }
+    
+    .landscape-item {
+        padding: 15px;
+        min-height: 100px;
+    }
+    
+    .landscape-item .emoji {
+        font-size: 2rem;
+        margin-bottom: 6px;
+    }
+    
+    .landscape-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+    }
+    
+    .landscape-item p {
+        font-size: 0.9rem;
+    }
+    
+    .control-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+        min-height: 40px;
+    }
+    
+    .pagination-btn {
+        font-size: 15px;
+        min-height: 44px;
+        padding: 10px 20px;
+    }
+    
+    .page-info {
+        font-size: 1.1rem;
+        padding: 10px 16px;
+    }
+    
+    .instructions {
+        padding: 15px;
+    }
+    
+    .instructions h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .instructions li {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+    }
+    
+    .note {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 超小螢幕優化 */
+@media (max-width: 360px) {
     .header h1 {
         font-size: 1.5rem;
     }
     
-    .control-btn {
-        padding: 10px 15px;
-        font-size: 12px;
+    #youtube-player {
+        height: 200px;
     }
     
-    #youtube-player {
-        height: 250px;
+    .landscape-item {
+        padding: 12px;
+        min-height: 90px;
+    }
+    
+    .landscape-item .emoji {
+        font-size: 1.8rem;
+    }
+    
+    .landscape-item h3 {
+        font-size: 1rem;
+    }
+    
+    .landscape-item p {
+        font-size: 0.85rem;
+    }
+    
+    .random-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    
+    .pagination-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* 觸控設備優化 */
+@media (hover: none) and (pointer: coarse) {
+    /* 增加觸控目標大小 */
+    .landscape-item {
+        min-height: 80px;
+        touch-action: manipulation;
+    }
+    
+    .pagination-btn {
+        min-height: 44px;
+        min-width: 44px;
+        touch-action: manipulation;
+    }
+    
+    .random-btn {
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+    
+    .control-btn {
+        min-height: 44px;
+        min-width: 44px;
+        touch-action: manipulation;
+    }
+    
+    /* 移除hover效果，使用active狀態 */
+    .landscape-item:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .landscape-item:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+    
+    .pagination-btn:hover {
+        transform: none;
+    }
+    
+    .pagination-btn:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+    
+    .random-btn:hover {
+        transform: none;
+    }
+    
+    .random-btn:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+    
+    /* 優化滾動性能 */
+    .landscape-grid {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* 防止文字選擇 */
+    .landscape-item,
+    .pagination-btn,
+    .random-btn,
+    .control-btn {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
     }
 }
