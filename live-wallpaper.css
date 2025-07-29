@@ -60,11 +60,13 @@ body {
 }
 
 .video-overlay {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: static;
     display: flex;
     gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+    padding: 0;
 }
 
 .control-btn {
@@ -357,8 +359,11 @@ body {
     .video-overlay {
         position: static;
         justify-content: center;
-        margin-top: 15px;
+        align-items: center;
         flex-wrap: wrap;
+        gap: 8px;
+        margin: 12px 0;
+        padding: 0;
     }
     
     .control-btn {
