@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貪吃蛇遊戲</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 登入界面 -->
+    <div id="login-container" class="login-container">
+        <div class="login-box">
+            <h2>登入遊戲</h2>
+            <div class="input-group">
+                <label for="username">用戶名:</label>
+                <input type="text" id="username" placeholder="請輸入用戶名" maxlength="20">
+            </div>
+            <button id="login-btn">登入遊戲</button>
+            <div class="login-info">
+                <p>輸入用戶名即可開始遊戲</p>
+                <p>您的最高分數將被記錄</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 遊戲主界面 -->
+    <div id="game-container" class="game-container" style="display: none;">
+        <div class="user-info">
+            <span>玩家: <span id="current-user"></span></span>
+            <button id="logout-btn">登出</button>
+        </div>
+        <div class="game-header">
+            <h1>貪吃蛇遊戲</h1>
+            <div class="score-container">
+                <span>分數: </span>
+                <span id="score">0</span>
+            </div>
+        </div>
+        <canvas id="game-canvas" width="400" height="400"></canvas>
+        <div class="controls">
+            <button id="start-btn">開始遊戲</button>
+            <button id="pause-btn">暫停</button>
+            <button id="restart-btn">重新開始</button>
+            <button id="music-btn">🎵 音樂</button>
+        </div>
+
+        <div class="game-info">
+            <div class="leaderboard">
+                <h2>排行榜</h2>
+                <div id="leaderboard-list">
+                    <p>暫無記錄</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 遊戲結束頁面 -->
+    <div id="game-over-container" class="game-over-container" style="display: none;">
+        <div class="game-over-content">
+            <h1>遊戲結束</h1>
+            <div class="final-score">
+                <h2>本次得分: <span id="final-score">0</span></h2>
+            </div>
+            <div class="leaderboard-section">
+                <h2>🏆 排行榜</h2>
+                <div id="game-over-leaderboard-list">
+                    <p>暫無記錄</p>
+                </div>
+            </div>
+            <div class="game-over-controls">
+                <button id="play-again-btn">再玩一次</button>
+                <button id="back-to-game-btn">返回遊戲</button>
+            </div>
+        </div>
+    </div>
+    <script src="eat-sound.js"></script>
+    <script src="background-music.js"></script>
+    <script src="smooth-graphics.js"></script>
+    <script src="user-system.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

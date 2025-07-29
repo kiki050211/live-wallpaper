@@ -1,0 +1,526 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* 登入界面樣式 */
+.login-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-box h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+#login-btn {
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+}
+
+#login-btn:hover {
+    background-color: #388e3c;
+}
+
+.login-info {
+    color: #666;
+    font-size: 14px;
+}
+
+.login-info p {
+    margin: 5px 0;
+}
+
+/* 用戶信息區域 */
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 15px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    width: 400px;
+    max-width: 100%;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333;
+}
+
+#logout-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#logout-btn:hover {
+    background-color: #d32f2f;
+}
+
+.game-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.game-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.game-header h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.score-container {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+#score {
+    color: red;
+}
+
+#game-canvas {
+    background-color: #e8f5e9;
+    border: 2px solid #4caf50;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+
+button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #388e3c;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#pause-btn {
+    background-color: #ff9800;
+}
+
+#pause-btn:hover {
+    background-color: #f57c00;
+}
+
+#restart-btn {
+    background-color: #f44336;
+}
+
+#restart-btn:hover {
+    background-color: #d32f2f;
+}
+
+#music-btn {
+    background-color: #9c27b0;
+}
+
+#music-btn:hover {
+    background-color: #7b1fa2;
+}
+
+#music-btn.muted {
+    background-color: #757575;
+    opacity: 0.7;
+}
+
+#music-btn.muted:hover {
+    background-color: #616161;
+}
+
+/* 遊戲信息區域 */
+.game-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+
+/* 排行榜樣式 */
+.leaderboard {
+    background-color: #e8f5e9;
+    border-radius: 5px;
+    padding: 15px;
+    border: 2px solid #4caf50;
+    transition: opacity 0.3s ease;
+    width: 400px;
+    max-width: 100%;
+}
+
+
+
+
+
+
+
+.leaderboard h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+#leaderboard-list {
+    min-height: 120px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    padding: 8px 15px;
+    background-color: #ffffff;
+    border: 2px solid #333;
+    border-radius: 25px;
+    max-width: 280px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.leaderboard-item.current-user {
+    background-color: #fff3e0;
+    border-color: #ff9800;
+}
+
+.rank-circle {
+    width: 24px;
+    height: 24px;
+    background-color: #ff6600;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.player-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.player-name {
+    font-weight: 500;
+    color: #333;
+    margin-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.player-score {
+    font-weight: bold;
+    color: #4caf50;
+    flex-shrink: 0;
+}
+}
+
+
+
+
+
+/* 遊戲結束頁面樣式 */
+.game-over-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.game-over-content {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.game-over-content h1 {
+    color: #e74c3c;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.final-score {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 5px solid #3498db;
+}
+
+.final-score h2 {
+    color: #2c3e50;
+    margin: 0;
+}
+
+.final-score span {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.leaderboard-section {
+    margin: 30px 0;
+    text-align: left;
+}
+
+.leaderboard-section h2 {
+    text-align: center;
+    color: #f39c12;
+    margin-bottom: 20px;
+}
+
+#game-over-leaderboard-list {
+    max-height: 250px;
+    overflow-y: auto;
+    background: #e8f5e8;
+    border: 3px solid #4caf50;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.leaderboard-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.not-in-leaderboard {
+    text-align: center;
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 20px;
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+#game-over-leaderboard-list .leaderboard-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 12px 15px;
+    background-color: #ffffff;
+    border: 2px solid #4caf50;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-height: 40px;
+}
+
+#game-over-leaderboard-list .player-score {
+    color: #4caf50;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.game-over-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.game-over-controls button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#play-again-btn {
+    background: #27ae60;
+    color: white;
+}
+
+#play-again-btn:hover {
+    background: #2ecc71;
+    transform: translateY(-2px);
+}
+
+#back-to-game-btn {
+    background: #95a5a6;
+    color: white;
+}
+
+#back-to-game-btn:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 500px) {
+    #game-canvas {
+        width: 100%;
+        height: auto;
+    }
+    
+    .game-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .controls {
+        flex-wrap: wrap;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .login-container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .user-info {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .leaderboard {
+        width: 100%;
+    }
+    
+    #leaderboard-list {
+        grid-template-columns: 1fr;
+    }
+    
+
+    
+    .game-over-content {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .game-over-content h1 {
+        font-size: 2em;
+    }
+    
+    .game-over-controls {
+        flex-direction: column;
+    }
+}

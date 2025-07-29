@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube 即時風景桌布</title>
+    <link rel="stylesheet" href="live-wallpaper.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌍 YouTube 即時風景桌布</h1>
+            <p>將YouTube的4K即時風景直播設為您的動態桌布</p>
+        </header>
+
+        <div class="main-content">
+            <!-- 影片播放區域 -->
+            <div class="video-container">
+                <div id="youtube-player"></div>
+                <div class="video-overlay">
+                    <button id="fullscreen-btn" class="control-btn">🖥️ 全螢幕桌布模式</button>
+                    <button id="mute-btn" class="control-btn">🔇 靜音</button>
+                </div>
+            </div>
+
+            <!-- 風景選擇區域 -->
+            <div class="landscape-selection">
+                <div class="selection-header">
+                    <h2>選擇您喜愛的風景</h2>
+                    <div class="random-selector">
+                        <button id="random-btn" class="random-btn">🎲 幫我決定</button>
+                    </div>
+                </div>
+                <div class="landscape-grid" id="landscape-grid">
+                    <!-- 風景選項將由JavaScript動態生成 -->
+                </div>
+                <!-- 分頁控制 -->
+                <div id="pagination-container" class="pagination-container">
+                    <!-- 分頁按鈕將由JavaScript動態生成 -->
+                </div>
+            </div>
+
+            <!-- 使用說明 -->
+            <div class="instructions">
+                <h3>使用說明</h3>
+                <ol>
+                    <li>選擇您喜愛的風景場景</li>
+                    <li>點擊「全螢幕桌布模式」進入桌布模式</li>
+                    <li>影片將自動靜音播放</li>
+                    <li>按 ESC 鍵退出全螢幕模式</li>
+                </ol>
+                <div class="note">
+                    <p><strong>注意：</strong>此功能需要現代瀏覽器支援，建議使用 Chrome、Firefox 或 Edge 瀏覽器。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全螢幕桌布模式 -->
+    <div id="wallpaper-mode" class="wallpaper-mode" style="display: none;">
+        <div id="wallpaper-player"></div>
+        <div class="wallpaper-controls">
+            <button id="exit-wallpaper" class="exit-btn">✕ 退出桌布模式</button>
+        </div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="live-wallpaper.js"></script>
+</body>
+</html>
